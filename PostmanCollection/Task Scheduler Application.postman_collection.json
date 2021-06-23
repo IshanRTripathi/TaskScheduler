@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "aa5a94a7-ddf0-42f4-bd18-fa1ffa833625",
+		"name": "Task Scheduler Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3210/api/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3210",
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"taskNumber\": 1,\r\n    \"title\": \"1st task\",\r\n    \"description\": \"This is my 1st task with custom storyPoints\",\r\n    \"storyPoints\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3210/api/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3210",
+					"path": [
+						"api",
+						"task"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

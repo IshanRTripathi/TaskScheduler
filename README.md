@@ -1,14 +1,34 @@
 # TaskScheduler
 A REST API based application similar to JIRA software
 
-Refer to images/ for sample requests
+Refer to `images/` for screenshots of sample requests
 
-How to use -
-1. clone this project
-2. open terminal with the location as src of the project, example -C:\Users\Ishan R Tripathi\Desktop\TaskScheduler>
-3. run npm install
-4. once all dependencies are installed, change the port number if you're already using it
-5. make changes to the .env file, add your own location where you'e configured your mongoDB cluster and database
-6. run npm start
-7. your application should start running 
-8. open postman and hit endpoints as provided in the images folder
+### How to use -
+1. Clone this project using `git clone https://github.com/IshanRTripathi/TaskScheduler.git`
+2. Open terminal with the location as src of the project, <br>example `C:\Users\Ishan R Tripathi\Desktop\TaskScheduler`
+3. Run `npm install` to install dependencies
+4. Once installed, change the port number if already in use, currently it is set to `3210`
+5. Make changes to the `.env` file, add your own location where you've configured your mongoDB cluster and database
+6. Run `npm start`
+7. The CLI output should look like - <br>
+   `[nodemon] starting node index.js`<br>
+   `Listening at port 3210`<br>
+   `Connected to MongoDB with admin credentials`<br>
+8. Open postman and hit endpoints. The endpoints are available in the `PostmanCollection` folder
+
+### Functionalities
+
+`TODO`
+<blockquote contenteditable="false">
+1. Add option to modify a task <br>
+2. Add states of a task like In Progress, Done, Blocker<br>
+3. Add option to delete a task <br>
+4. Implement frontend using Reactjs
+</blockquote>
+
+`Done`
+<blockquote contenteditable="false">
+1. Add option to create a task <br>
+2. Add option to get all tasks<br>
+3. Create a schema for the db using javascript object
+</blockquote>

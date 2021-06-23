@@ -5,7 +5,7 @@ const Task = require('../model/Task');
 
 //get all tasks
 crudRouter.get('/tasks', async (request, response)=>{
-    console.log("Get all tasks");
+    console.log("Getting all tasks");
     try{
         try{
             const allTasks= await Task.find();
@@ -19,6 +19,7 @@ crudRouter.get('/tasks', async (request, response)=>{
 });
 // create a task
 crudRouter.post('/task', async(request, response)=>{
+    console.log("Adding a new task")
     try{
         const newTask= new Task({
             taskNumber: request.body.taskNumber,
@@ -43,4 +44,28 @@ crudRouter.post('/task', async(request, response)=>{
 // modify/update a task
 // modify status of task
 
+/*//delete a post
+router.delete('/:postId', async (req, res)=>{
+    try{
+        const removedPost= await Post.remove({_id:req.params.postId});
+        res.json(removedPost);
+    }catch(err){
+        res.json({message: err});
+    }
+});
+
+//update a post
+router.patch('/:postId', async (req, res)=>{
+    try{
+        const updatedPost= await Post.updateOne(
+            {_id: req.params.postId},
+            {$set: {title: req.body.title}}
+        );
+
+        res.json(updatedPost);
+    } catch (err){
+        res.json({message: err});
+    }
+});
+*/
 module.exports= crudRouter;
