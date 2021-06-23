@@ -1,2 +1,4 @@
 # TaskScheduler
-A REST API based apllication similar to JIRA software
+A REST API based application similar to JIRA software
+
+Refer to images/ for sample requests
