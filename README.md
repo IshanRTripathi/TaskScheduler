@@ -1,7 +1,7 @@
 # TaskScheduler
 A REST API based application similar to JIRA software
 
-Refer to `images/` for screenshots of sample requests
+Refer to `images/` folder for screenshots of sample requests
 
 ### How to use -
 1. Clone this project using `git clone https://github.com/IshanRTripathi/TaskScheduler.git`
