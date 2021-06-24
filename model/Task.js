@@ -1,5 +1,7 @@
 const mongoose= require('mongoose');
 
+const statusEnum= ['todo', 'started', 'done', 'blocked', 'deleted'];
+
 const TaskSchema= mongoose.Schema({
     taskNumber:{
         type: Number,
@@ -24,6 +26,11 @@ const TaskSchema= mongoose.Schema({
     storyPoints:{
         type: Number,
         default: 1
+    },
+    status:{
+        type: String,
+        enum: statusEnum,
+        default: 'todo'
     }
 });
 

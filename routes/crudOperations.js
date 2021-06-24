@@ -23,6 +23,7 @@ crudRouter.post('/task', async(request, response)=>{
     try{
         const newTask= new Task({
             taskNumber: request.body.taskNumber,
+            status: request.body.status,
             title: request.body.title,
             description: request.body.description,
             storyPoints: request.body.storyPoints
@@ -41,6 +42,17 @@ crudRouter.post('/task', async(request, response)=>{
     }
 });
 // delete a task
+crudRouter.delete('/tasks/:taskNumber', async(request, response)=>{
+    try{
+        const removedPost= await Task.remove({taskNumber:request.params.taskNumber});
+        console.log("Removing the task with taskNumber: ", request.params.taskNumber);
+        response.json(removedPost);
+    }
+    catch (err){
+        response.json("message: "+err);
+        console.log("Error removing task!");
+    }
+});
 // modify/update a task
 // modify status of task
 
