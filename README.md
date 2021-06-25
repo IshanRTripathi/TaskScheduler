@@ -21,14 +21,16 @@ Refer to `images/` for screenshots of sample requests
 `TODO`
 <blockquote contenteditable="false">
 1. Add option to modify a task <br> 
-2. Implement frontend using Reactjs
+2. Implement frontend using Reactjs <br>
+3. Search functionality <br>
+4. Add new parameter, created by : {$username} <br>
 </blockquote>
 
 `Done`
 <blockquote contenteditable="false">
 1. Add option to create a task <br>
-2. Add option to get all tasks<br>
-3. Create a schema for the db using javascript object<br>
-4. Add states of a task like In Progress, Done, Blocker<br>
+2. Add option to get all tasks <br>
+3. Create a schema for the db using javascript object <br>
+4. Add states of a task like In Progress, Done, Blocker <br>
 5. Add option to delete a task <br>
 </blockquote>

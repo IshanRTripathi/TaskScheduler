@@ -17,6 +17,21 @@ crudRouter.get('/tasks', async (request, response)=>{
         console.log("error: "+err);
     }
 });
+//get task by _id
+crudRouter.get('/tasks/:taskID', async (request, response)=>{
+    const taskID= request.params.taskID;
+    console.log("Getting a task with id: "+taskID);
+    try{
+        try{
+            const allTasks= await Task.findById(taskID);
+            response.json(allTasks);
+        } catch (err){
+            response.json(err);
+        }
+    } catch(err){
+        console.log("error: "+err);
+    }
+});
 // create a task
 crudRouter.post('/task', async(request, response)=>{
     console.log("Adding a new task")
@@ -44,7 +59,7 @@ crudRouter.post('/task', async(request, response)=>{
 // delete a task
 crudRouter.delete('/tasks/:taskNumber', async(request, response)=>{
     try{
-        const removedPost= await Task.remove({taskNumber:request.params.taskNumber});
+        const removedPost= await Task.deleteOne({taskNumber:request.params.taskNumber});
         console.log("Removing the task with taskNumber: ", request.params.taskNumber);
         response.json(removedPost);
     }
@@ -53,31 +68,36 @@ crudRouter.delete('/tasks/:taskNumber', async(request, response)=>{
         console.log("Error removing task!");
     }
 });
-// modify/update a task
-// modify status of task
+//update a task
+crudRouter.patch('/tasks/:taskID', async (request, response)=>{
+    const taskID= request.params.taskID;
+    const body= request.body;
+    console.log("task id: "+taskID);
+    // let query= {$set: {}};
+    // for(let key in request.body) {
+    //     query.$set[key] = request.body[key];
+    //     console.log(key+":"+request.body[key]+":"+request.body.key);
+    //
+    // }
+    // console.log("Query passed for update: "+query);
 
-/*//delete a post
-router.delete('/:postId', async (req, res)=>{
-    try{
-        const removedPost= await Post.remove({_id:req.params.postId});
-        res.json(removedPost);
-    }catch(err){
-        res.json({message: err});
-    }
+    const task= await Task.updateOne({_id: taskID},
+                {$set:
+                        {
+                            title: body.title,
+                            description: body.description,
+                            storyPoints: body.storyPoints,
+                            dateModified: Date.now(),
+                            taskNumber: body.taskNumber,
+                            status: body.status
+                        }
+                }
+            );
+    response.json(task);
+    // if(!task) return response.status(404).send("No task present !");
+    // // console.log(task);
+
+    // const updatedProduct = await Task.updateMany({_id: request.params._id}, query);
+    // response.json(updatedProduct);
 });
-
-//update a post
-router.patch('/:postId', async (req, res)=>{
-    try{
-        const updatedPost= await Post.updateOne(
-            {_id: req.params.postId},
-            {$set: {title: req.body.title}}
-        );
-
-        res.json(updatedPost);
-    } catch (err){
-        res.json({message: err});
-    }
-});
-*/
 module.exports= crudRouter;
