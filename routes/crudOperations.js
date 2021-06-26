@@ -41,7 +41,8 @@ crudRouter.post('/task', async(request, response)=>{
             status: request.body.status,
             title: request.body.title,
             description: request.body.description,
-            storyPoints: request.body.storyPoints
+            storyPoints: request.body.storyPoints,
+            createdBy: request.body.createdBy
         });
 
         newTask.save()
@@ -72,28 +73,70 @@ crudRouter.delete('/tasks/:taskNumber', async(request, response)=>{
 crudRouter.patch('/tasks/:taskID', async (request, response)=>{
     const taskID= request.params.taskID;
     const body= request.body;
-    console.log("task id: "+taskID);
-    // let query= {$set: {}};
+    body.dateModified= Date.now();
+    // if(body.status in ['todo', 'started', 'done', 'blocked', 'deleted']) {
+        console.log("task id: " + taskID);
+        try {
+            const updateTask = await Task.findByIdAndUpdate({_id: taskID}, body, {new: true});
+            response.send(updateTask);
+        } catch (err) {
+            response.status(404).send('error updating task');
+        }
+    // }
+
+    //================================
+
+    // try{
+    //     const updatedTask= Task.findOne({_id: taskID});
+    //
+    //     console.log(updatedTask);
+    //     await updatedTask.save()
+    //         .then(data => {
+    //             console.log("Saving data !");
+    //             response.json(data);
+    //         })
+    //         .catch(err => {
+    //             console.log("Error saving data !");
+    //             response.json(err);
+    //         });
+    //     response.send(task);
+    // } catch (e) {
+    //     response.json(e);
+    // }
+    //================================
+    // const updatedTask= Task.findByIdAndUpdate(taskID, request.body, {new: true})
+    //     .then((task)=>{
+    //         if(!task){
+    //             return response.status(404).send(response.json);
+    //         }
+    //         else {
+    //
+    //             response.send(task);
+    //         }
+    //     }).catch((error)=>{
+    //         response.status(500).send(error);
+    //     })
+    //===========================================
+    // response.json(updatedTask);
+    // let query= {};
     // for(let key in request.body) {
-    //     query.$set[key] = request.body[key];
-    //     console.log(key+":"+request.body[key]+":"+request.body.key);
     //
     // }
-    // console.log("Query passed for update: "+query);
+    // console.log(query);
 
-    const task= await Task.updateOne({_id: taskID},
-                {$set:
-                        {
-                            title: body.title,
-                            description: body.description,
-                            storyPoints: body.storyPoints,
-                            dateModified: Date.now(),
-                            taskNumber: body.taskNumber,
-                            status: body.status
-                        }
-                }
-            );
-    response.json(task);
+    // const task= await Task.updateOne({_id: taskID}, {$set: {query}}
+                // {$set:
+                //         {
+                //             title: body.title,
+                //             description: body.description,
+                //             storyPoints: body.storyPoints,
+                //             dateModified: Date.now(),
+                //             taskNumber: body.taskNumber,
+                //             status: body.status
+                //         }
+                // }
+    //         );
+    // response.json(task);
     // if(!task) return response.status(404).send("No task present !");
     // // console.log(task);
 

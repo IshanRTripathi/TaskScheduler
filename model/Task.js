@@ -31,6 +31,13 @@ const TaskSchema= mongoose.Schema({
         type: String,
         enum: statusEnum,
         default: 'todo'
+    },
+    createdBy:{
+        type: String,
+        required: true
+    },
+    updatedBy:{
+        type: String
     }
 });
 
