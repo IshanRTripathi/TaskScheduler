@@ -2,7 +2,7 @@ const express = require('express');
 const crudRouter = express.Router();
 
 const Task = require('../model/Task');
-
+const statusList = require('../model/Status');
 //get all tasks
 crudRouter.get('/tasks', async (request, response)=>{
     console.log("Getting all tasks");
@@ -71,16 +71,17 @@ crudRouter.delete('/tasks/:taskNumber', async(request, response)=>{
 });
 //update a task
 crudRouter.patch('/tasks/:taskID', async (request, response)=>{
-    const taskID= request.params.taskID;
+    const taskID= request.params['taskID'];
     const body= request.body;
     body.dateModified= Date.now();
-    // if(body.status in ['todo', 'started', 'done', 'blocked', 'deleted']) {
-        console.log("task id: " + taskID);
         try {
+            if(statusList.status.indexOf(body.status)===-1){
+                throw 422;          //, no status found as given in the input";
+            }
             const updateTask = await Task.findByIdAndUpdate({_id: taskID}, body, {new: true});
             response.send(updateTask);
         } catch (err) {
-            response.status(404).send('error updating task');
+            response.sendStatus(404).send(err);
         }
     // }
 
