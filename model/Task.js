@@ -5,7 +5,9 @@ const statusEnum= ['todo', 'started', 'done', 'blocked', 'deleted'];
 const TaskSchema= mongoose.Schema({
     taskNumber:{
         type: Number,
-        required: true
+        required: true,
+        unique: true,
+        autoIncrement: true
     },
     title:{
         type: String,

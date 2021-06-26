@@ -24,7 +24,7 @@ mongoose.connect(
     process.env.DB_CONNECTION_URI,
     { useNewUrlParser: true },// was asked to add this from the deprecation warning log
     () => { //callback function
-        console.log("Connected to MongoDB with admin credentials");
+        console.log("\n\n===============================================\n| Connected to MongoDB with admin credentials |\n===============================================");
     });
 
 //configure app to use port

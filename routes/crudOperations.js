@@ -17,9 +17,9 @@ crudRouter.get('/tasks', async (request, response)=>{
         console.log("error: "+err);
     }
 });
-//get task by _id
+//get task by taskID
 crudRouter.get('/tasks/:taskID', async (request, response)=>{
-    const taskID= request.params.taskID;
+    const taskID= request.params['taskID'];
     console.log("Getting a task with id: "+taskID);
     try{
         try{
@@ -74,15 +74,16 @@ crudRouter.patch('/tasks/:taskID', async (request, response)=>{
     const taskID= request.params['taskID'];
     const body= request.body;
     body.dateModified= Date.now();
-        try {
-            if(statusList.status.indexOf(body.status)===-1){
-                throw 422;          //, no status found as given in the input";
-            }
-            const updateTask = await Task.findByIdAndUpdate({_id: taskID}, body, {new: true});
-            response.send(updateTask);
-        } catch (err) {
-            response.sendStatus(404).send(err);
+    body.updatedBy= 'ishanr';
+    try {
+        if(statusList.status.indexOf(body.status)===-1){
+            throw 422;          //, no status found as given in the input";
         }
+        const updateTask = await Task.findByIdAndUpdate({_id: taskID}, body, {new: true});
+        response.send(updateTask);
+    } catch (err) {
+        response.sendStatus(404).send(err);
+    }
     // }
 
     //================================
