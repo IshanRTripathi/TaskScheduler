@@ -22,6 +22,7 @@ Refer to `images/` folder for screenshots of sample requests
 <blockquote contenteditable="false">
 1. Search functionality <br>
 2. Implement frontend using Reactjs <br>
+3. Create sprints implementation
 </blockquote>
 
 `Done`
