@@ -4,12 +4,12 @@ A REST API based application similar to JIRA software
 Refer to `images/` folder for screenshots of sample requests
 
 ### How to use -
-1. Clone this project using `git clone https://github.com/IshanRTripathi/TaskScheduler.git`
+1. Clone this project using ```git clone https://github.com/IshanRTripathi/TaskScheduler.git```
 2. Open terminal with the location as src of the project, <br>example `C:\Users\Ishan R Tripathi\Desktop\TaskScheduler`
-3. Run `npm install` to install dependencies
+3. Run ```npm install``` to install dependencies
 4. Once installed, change the port number if already in use, currently it is set to `3210`
 5. Make changes to the `.env` file, add your own location where you've configured your mongoDB cluster and database
-6. Run `npm start`
+6. Run ```npm start```
 7. The CLI output should look like - <br>
    `[nodemon] starting node index.js`<br>
    `Listening at port 3210`<br>
