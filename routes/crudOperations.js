@@ -42,7 +42,8 @@ crudRouter.post('/task', async(request, response)=>{
             title: request.body.title,
             description: request.body.description,
             storyPoints: request.body.storyPoints,
-            createdBy: request.body.createdBy
+            createdBy: request.body.createdBy,
+            modifiedBy: request.body.modifiedBy
         });
 
         newTask.save()
