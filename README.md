@@ -3,6 +3,19 @@ A REST API based application similar to JIRA software
 
 Refer to `images/` folder for screenshots of sample requests
 
+### Project information
+- Fundamental of Express: routing, middleware, etc.
+- Fundamental of Mongoose: Data models, data validation.
+- RESTful API including pagination,sorting and limiting fields (todo)
+- CRUD operations with MongoDB
+- Security: encryption, sanitization and more (todo)
+- Authentication with JWT : login and signup (todo)
+- Authorization (User roles and permissions) (todo)
+- Error handling
+- Environment Variables using ```.env``` file
+- Catching Uncaught Exception and logging to console
+
+
 ### How to use -
 1. Clone this project using ```git clone https://github.com/IshanRTripathi/TaskScheduler.git```
 2. Open terminal with the location as src of the project, <br>example `C:\Users\Ishan R Tripathi\Desktop\TaskScheduler`
@@ -22,7 +35,11 @@ Refer to `images/` folder for screenshots of sample requests
 <blockquote contenteditable="false">
 1. Search functionality <br>
 2. Implement frontend using Reactjs <br>
-3. Create sprints implementation
+3. Create sprints implementation <br>
+4. Include pagination,sorting and limiting fields <br>
+5. Security: Implement encryption, sanitization <br>
+6. Authentication with JWT : login and signup <br>
+7. Authorization (User roles and permissions) <br>
 </blockquote>
 
 `Done`
