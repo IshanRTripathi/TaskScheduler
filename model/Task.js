@@ -1,6 +1,5 @@
 const mongoose= require('mongoose');
-
-const statusEnum= ['todo', 'started', 'done', 'blocked', 'deleted'];
+const statusEnum = require('../model/Status').status;
 
 const TaskSchema= mongoose.Schema({
     taskNumber:{
