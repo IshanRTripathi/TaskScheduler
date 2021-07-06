@@ -36,15 +36,23 @@ crudRouter.get('/tasks/:taskID', async (request, response)=>{
 crudRouter.post('/task', async(request, response)=>{
     console.log("Adding a new task")
     try{
-        const newTask= new Task({
-            taskNumber: request.body.taskNumber,
-            status: request.body.status,
-            title: request.body.title,
-            description: request.body.description,
-            storyPoints: request.body.storyPoints,
-            createdBy: request.body.createdBy,
-            modifiedBy: request.body.modifiedBy
-        });
+        let query= {};
+        for(let key in request.body) {
+            query[key]= request.body[key];
+        }
+        console.log(query);
+        const newTask= new Task(
+            query
+            // {
+            //     taskNumber: request.body.taskNumber,
+            //     status: request.body.status,
+            //     title: request.body.title,
+            //     description: request.body.description,
+            //     storyPoints: request.body.storyPoints,
+            //     createdBy: request.body.createdBy,
+            //     modifiedBy: request.body.modifiedBy
+            // }
+        );
 
         newTask.save()
             .then(data => {

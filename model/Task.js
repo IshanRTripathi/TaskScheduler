@@ -39,6 +39,14 @@ const TaskSchema= mongoose.Schema({
     },
     updatedBy:{
         type: String
+    },
+    assignee:{
+        type: String,
+        required:true
+    },
+    reporter:{
+        type:String,
+        required:true
     }
 });
 
