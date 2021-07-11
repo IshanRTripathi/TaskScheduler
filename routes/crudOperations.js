@@ -3,7 +3,10 @@ const crudRouter = express.Router();
 
 const Task = require('../model/Task');
 const statusList = require('../model/Status');
-//get all tasks
+
+
+
+/*================================== GET ALL TASKS =============================*/
 crudRouter.get('/tasks', async (request, response)=>{
     console.log("Getting all tasks");
     try{
@@ -17,7 +20,10 @@ crudRouter.get('/tasks', async (request, response)=>{
         console.log("error: "+err);
     }
 });
-//get task by taskID
+
+
+
+/*================================== GET ALL TASKS BY TASK ID =============================*/
 crudRouter.get('/tasks/:taskID', async (request, response)=>{
     const taskID= request.params['taskID'];
     console.log("Getting a task with id: "+taskID);
@@ -32,7 +38,9 @@ crudRouter.get('/tasks/:taskID', async (request, response)=>{
         console.log("error: "+err);
     }
 });
-// create a task
+
+
+/*================================== CREATE A TASK =============================*/
 crudRouter.post('/task', async(request, response)=>{
     console.log("Adding a new task")
     try{
@@ -66,7 +74,10 @@ crudRouter.post('/task', async(request, response)=>{
         console.log(err);
     }
 });
-// delete a task
+
+
+
+/*================================== DELETE TASK BY TASKNUMBER =============================*/
 crudRouter.delete('/tasks/:taskNumber', async(request, response)=>{
     try{
         const removedPost= await Task.deleteOne({taskNumber:request.params.taskNumber});
@@ -78,13 +89,17 @@ crudRouter.delete('/tasks/:taskNumber', async(request, response)=>{
         console.log("Error removing task!");
     }
 });
-//update a task
+
+
+
+/*================================== UPDATE TASK BY TASKID =============================*/
 crudRouter.patch('/tasks/:taskID', async (request, response)=>{
     const taskID= request.params['taskID'];
     const body= request.body;
     body.dateModified= Date.now();
     body.updatedBy= 'ishanr';
     try {
+        // validate value of status
         if(statusList.status.indexOf(body.status)===-1){
             throw 422;          //, no status found as given in the input";
         }
@@ -93,9 +108,6 @@ crudRouter.patch('/tasks/:taskID', async (request, response)=>{
     } catch (err) {
         response.sendStatus(404).send(err);
     }
-    // }
-
-    //================================
 
     // try{
     //     const updatedTask= Task.findOne({_id: taskID});
