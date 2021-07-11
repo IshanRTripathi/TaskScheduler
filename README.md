@@ -13,7 +13,7 @@ Refer to `images/` folder for screenshots of sample requests
 - Authorization (User roles and permissions) (todo)
 - Error handling
 - Environment Variables using ```.env``` file
-- Catching Uncaught Exception and logging to console
+- Catching Uncaught Exception and logging to console, returning error codes where needed
 
 
 ### How to use -
